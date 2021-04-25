@@ -2,8 +2,11 @@
     padding: 0px;
     margin: 0px ;
 }
+body{
+    position: relative;
+}
 .line{
+    position: absolute;
     height: 2px;
-    width: 200px;
     background-color: #ea2ce2;
 }

@@ -24,20 +24,42 @@
     </div>
 
     <script>
-        var line = {
-            heigth: '2px',
-            width: Math.round(Math.random() * 100)
-        }
+        $(function () {
 
-        $('#boy-bg').append(`<div></div>`)
+            line()
+
+            clealine()
+        })
 
         function line() {
             setInterval(function (params) {
                 var line = {
-                    heigth: '2px',
-                    width: Math.round(Math.random() * 100)
+                    width: Math.round(Math.random() * 100),
+                    left: Math.round(Math.random() * 100),
+                    top: Math.round(Math.random() * 100)
                 }
-            }, 1000)
+                $('#body-bg').append(
+                    `<div class='line' style='width:${line.width}px;
+                    height:2px; position: absolute; 
+                    background-color: #ea2ce2;left:${line.left}px;top:${line.top}px'></div>`
+                )
+            }, 3000)
+        }
+        function clealine() {
+            setInterval(function () {
+                var lineArry=[]
+                if ($('.line').length > 1) {
+                    $.each($('.line'), function (i, item) {
+                        lineArry.push(item)
+                        console.log(lineArry)
+                    })
+
+                    lineArry.splice(0,3);
+                    $.each(lineArry, function (i, item) {
+                        $(item).remove()
+                    })
+                }
+            }, 12000)
         }
     </script>
 </body>
