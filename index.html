@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/css.css">
     <title>Love</title>
+    <!-- 引入jq -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- 引入bootstrap css -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.css" rel="stylesheet">
+    <!-- 引入bootstrap js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.js"></script>
 </head>
-<body>
-    <div>
-        <h1>家乐爱雪儿</h1>
+
+<body id="body-bg">
+    <div class="">
+
     </div>
+    <div class="line"> </div>
+
+    <div class="container">
+    </div>
+
+    <script>
+        var line = {
+            heigth: '2px',
+            width: Math.round(Math.random() * 100)
+        }
+
+        $('#boy-bg').append(`<div></div>`)
+
+        function line() {
+            setInterval(function (params) {
+                var line = {
+                    heigth: '2px',
+                    width: Math.round(Math.random() * 100)
+                }
+            }, 1000)
+        }
+    </script>
 </body>
+
 </html>

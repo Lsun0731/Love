@@ -2,23 +2,8 @@
     padding: 0px;
     margin: 0px ;
 }
-body{
-    background-color: #cccc;
-}
-div{
+.line{
+    height: 2px;
     width: 200px;
-    height: 200px;
-    margin: 100px auto;
-    border:  1px solid red;
-    border-radius: 20px;
-    text-align: center;
-}
-div h1{
- color: slateblue;
- margin-top: 50px;
-}
-
-div h1:hover{
-    color: slateblue;
-    cursor: pointer;
+    background-color: #ea2ce2;
 }
