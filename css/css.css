@@ -10,3 +10,10 @@ body{
     height: 2px;
     background-color: #ea2ce2;
 }
+.image-warp{
+    height: 400px;
+}
+.image-warp>img{
+    width: 100%;
+   height: 100%;
+}

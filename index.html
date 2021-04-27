@@ -15,51 +15,83 @@
 </head>
 
 <body id="body-bg">
-    <div class="">
-
-    </div>
-    <div class="line"> </div>
-
     <div class="container">
+        <div class="image-warp">
+            <img src="" alt="" srcset="">
+        </div>
+
+
     </div>
 
     <script>
         $(function () {
 
-            line()
+            //以下代码仅为演示用,具体传入参数请参看接口描述详情页.
+            //需要引用jquery库
 
-            clealine()
-        })
+            $.ajax({
+                type: 'post',
+                url: 'http://route.showapi.com/1287-1',
+                dataType: 'json',
+                data: {
+                    "showapi_timestamp": formatterDateTime(),
+                    "showapi_appid": '368423', //这里需要改成自己的appid
+                    "showapi_sign": 'fc34e670e22f4009813a06bdf75a1b37', //这里需要改成自己的应用的密钥secret
+                },
 
-        function line() {
-            setInterval(function (params) {
-                var line = {
-                    width: Math.round(Math.random() * 100),
-                    left: Math.round(Math.random() * 100),
-                    top: Math.round(Math.random() * 100)
+
+                success: function (res) {
+                    var data = res.showapi_res_body.data
+                    console.log(data)
+                    $('.image-warp').find('img').attr('src', data.img_1920)
+                },
+                error: function (res) {
+                    console.log(res)
                 }
-                $('#body-bg').append(
-                    `<div class='line' style='width:${line.width}px;
-                    height:2px; position: absolute; 
-                    background-color: #ea2ce2;left:${line.left}px;top:${line.top}px'></div>`
-                )
-            }, 3000)
-        }
-        function clealine() {
-            setInterval(function () {
-                var lineArry=[]
-                if ($('.line').length > 1) {
-                    $.each($('.line'), function (i, item) {
-                        lineArry.push(item)
-                        console.log(lineArry)
-                    })
+            })
 
-                    lineArry.splice(0,3);
-                    $.each(lineArry, function (i, item) {
-                        $(item).remove()
-                    })
+            $.ajax({
+                type: 'get',
+                url: 'https://restapi.amap.com/v3/weather/weatherInfo',
+                dataType: 'json',
+                data: {
+                    key:'e491fcf063c52a4be0b2ff7da42e3b69',
+                    city:'济宁',
+                    extensions:'base'
+                    
+                },
+                success: function (res) {
+                    console.log(res)
+                },
+                error: function (res) {
+                    console.log(res)
                 }
-            }, 12000)
+            })
+
+
+
+
+
+
+        });
+
+        function formatterDateTime() {
+            var date = new Date()
+            var month = date.getMonth() + 1
+            var datetime = date.getFullYear() +
+                "" // "年"
+                +
+                (month >= 10 ? month : "0" + month) +
+                "" // "月"
+                +
+                (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +
+                "" +
+                (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) +
+                "" +
+                (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
+                "" +
+                (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds());
+            return datetime;
         }
     </script>
 </body>
